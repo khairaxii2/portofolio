@@ -1,131 +1,578 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Khaira Ramadhani Putri | Portofolio</title>
+  <title>Khaira Putri - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Quicksand:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      background-color: #f9f9f9;
-      color: #333;
+      box-sizing: border-box;
     }
-    header {
-      background-color: #a8dadc;
-      padding: 20px;
-      text-align: center;
+    
+    * {
+      scroll-behavior: smooth;
     }
-    header h1 {
-      margin: 0;
-      font-size: 28px;
+    
+    .font-heading {
+      font-family: 'Playfair Display', serif;
     }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
+    
+    .font-body {
+      font-family: 'Quicksand', sans-serif;
     }
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
-    .home {
-      text-align: center;
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .home img {
-      width: 150px;
-      border-radius: 50%;
-      margin-bottom: 15px;
+    
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
-    .cta {
-      background-color: #457b9d;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 10px;
+    
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
-    .skills ul {
-      list-style: none;
-      padding: 0;
+    
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
-    .skills li {
-      background: #e9ecef;
-      margin: 5px 0;
-      padding: 10px;
-      border-radius: 5px;
+    
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
     }
-    footer {
-      background-color: #a8dadc;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .animate-scale-in {
+      animation: scaleIn 0.6s ease-out forwards;
+    }
+    
+    .animate-slide-left {
+      animation: slideInLeft 0.8s ease-out forwards;
+    }
+    
+    .animate-slide-right {
+      animation: slideInRight 0.8s ease-out forwards;
+    }
+    
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #e879a9 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(232, 121, 169, 0.15);
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #e879a9, #a78bfa);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .blob {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      animation: morph 8s ease-in-out infinite;
+    }
+    
+    @keyframes morph {
+      0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+      50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    }
+    
+    .section-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
-</head>
-<body>
-
-  <header>
-    <h1>Khaira Putri</h1>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <section id="home" class="home">
-    <img src="foto-khaira.jpg" alt="Khaira Ramadhani Putri">
-    <h2>Khaira Ramadhani Putri</h2>
-    <p>Siswi kelas 12 SMAN 1 Subang</p>
-    <p>Hobi: Memasak & Mendengarkan Musik</p>
-    <button class="cta">Lihat Portofolio</button>
-    <button class="cta">Hubungi Saya</button>
-  </section>
-
-  <section id="about">
-    <h2>Tentang Saya</h2>
-    <p>Saya adalah Khaira Ramadhani Putri, lahir pada 20 September 2008. Saya hobi memasak dan mendengarkan musik. Saya anak pertama dari dua bersaudara.</p>
-    <p><strong>Minat:</strong> Dunia kesehatan dan pangan</p>
-    <p><strong>Tujuan:</strong> Jadi orang kaya</p>
-    <p><strong>Pendidikan:</strong> Siswa kelas 12 SMAN 1 Subang</p>
-    <p><strong>Pengalaman:</strong> OSIS SMPN 1 Subang (Sekbid 7 - 2020, Sekbid 5 - 2021)</p>
-    <p><strong>Nilai Pribadi:</strong> Baik, murah hati, dan suka menolong</p>
-  </section>
-
-  <section id="skills" class="skills">
-    <h2>Keahlian</h2>
-    <ul>
-      <li><strong>Hard Skills:</strong> Berpikir kritis, mampu bergerak cepat</li>
-      <li><strong>Soft Skills:</strong> Komunikasi, kerja tim, kreativitas</li>
-    </ul>
-  </section>
-
-  <section id="portfolio">
-    <h2>Portofolio</h2>
-    <div>
-      <h3>Resep Masakan Sehat</h3>
-      <p>Koleksi resep sehat hasil eksperimen pribadi.</p>
-      <img src="resep-sehat.jpg" alt="Resep Masakan Sehat" width="300">
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body">
+  <div id="app-wrapper" class="h-full w-full overflow-auto" style="background: linear-gradient(135deg, #fdf2f8 0%, #faf5ff 50%, #f0fdf4 100%);"><!-- Header -->
+   <header id="header" class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/70 border-b border-pink-100">
+    <div class="max-w-6xl mx-auto px-6 py-4">
+     <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+       <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-purple-400 flex items-center justify-center text-white font-heading font-bold text-lg">
+        K
+       </div>
+       <div>
+        <h1 id="site-name" class="font-heading font-semibold text-gray-800">Khaira Putri</h1>
+        <p id="tagline" class="text-xs text-pink-400 italic">swiftiee ✨</p>
+       </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-8"><a href="#home" class="nav-link text-gray-600 hover:text-pink-500 transition-colors font-medium">Home</a> <a href="#about" class="nav-link text-gray-600 hover:text-pink-500 transition-colors font-medium">About</a> <a href="#skills" class="nav-link text-gray-600 hover:text-pink-500 transition-colors font-medium">Skills</a> <a href="#portfolio" class="nav-link text-gray-600 hover:text-pink-500 transition-colors font-medium">Portfolio</a> <a href="#experience" class="nav-link text-gray-600 hover:text-pink-500 transition-colors font-medium">Experience</a> <a href="#contact" class="nav-link text-gray-600 hover:text-pink-500 transition-colors font-medium">Contact</a>
+      </nav><button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-pink-50 transition-colors">
+       <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div><!-- Mobile Menu -->
+     <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-pink-100 pt-4">
+      <nav class="flex flex-col gap-3"><a href="#home" class="text-gray-600 hover:text-pink-500 transition-colors font-medium py-2">Home</a> <a href="#about" class="text-gray-600 hover:text-pink-500 transition-colors font-medium py-2">About</a> <a href="#skills" class="text-gray-600 hover:text-pink-500 transition-colors font-medium py-2">Skills</a> <a href="#portfolio" class="text-gray-600 hover:text-pink-500 transition-colors font-medium py-2">Portfolio</a> <a href="#experience" class="text-gray-600 hover:text-pink-500 transition-colors font-medium py-2">Experience</a> <a href="#contact" class="text-gray-600 hover:text-pink-500 transition-colors font-medium py-2">Contact</a>
+      </nav>
+     </div>
     </div>
-  </section>
-
-  <section id="contact">
-    <h2>Kontak</h2>
-    <p>Email: khairaputri@example.com</p>
-    <p>WhatsApp: +62 8xx-xxxx-xxxx</p>
-    <p>Instagram: @khairaputri</p>
-    <p>LinkedIn: linkedin.com/in/khairaputri</p>
-    <p>GitHub: github.com/khairaputri</p>
-  </section>
-
-  <footer>
-    <p>© Khaira Ramadhani Putri – 2026</p>
-  </footer>
-
-</body>
+   </header><!-- Home Section -->
+   <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+     <div class="text-center md:text-left animate-slide-left opacity-0" style="animation-fill-mode: forwards;">
+      <p class="text-pink-400 font-medium mb-2">👋 Selamat Datang!</p>
+      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">Hai, Saya<br><span id="welcome-title" class="gradient-text">Khaira Ramadhani Putri</span></h1>
+      <p class="text-gray-600 mb-2 flex items-center justify-center md:justify-start gap-2"><span class="text-2xl">🍳</span> <span>Hobi: <span id="welcome-subtitle" class="font-semibold text-pink-500">Memasak</span></span></p>
+      <p id="welcome-description" class="text-gray-500 mb-8 max-w-md mx-auto md:mx-0">Selamat datang di portofolio khairaa, silahkan baca untuk mengenal saya lebih jauh</p>
+      <div class="flex gap-4 justify-center md:justify-start"><a href="#portfolio" class="px-6 py-3 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-full font-medium hover:shadow-lg hover:shadow-pink-200 transition-all transform hover:scale-105"> Lihat Portofolio ✨ </a> <a href="#contact" class="px-6 py-3 border-2 border-pink-300 text-pink-500 rounded-full font-medium hover:bg-pink-50 transition-all"> Hubungi Saya </a>
+      </div>
+     </div>
+     <div class="flex justify-center animate-slide-right opacity-0" style="animation-fill-mode: forwards; animation-delay: 0.2s;">
+      <div class="relative">
+       <div class="absolute -inset-4 bg-gradient-to-r from-pink-200 to-purple-200 rounded-full blur-2xl opacity-50"></div>
+       <div class="relative blob w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-pink-300 via-purple-300 to-blue-200 flex items-center justify-center animate-float">
+        <svg class="w-32 h-32 md:w-40 md:h-40 text-white" viewbox="0 0 100 100" fill="currentColor"><circle cx="50" cy="35" r="20" fill="white" /> <path d="M25 85 Q25 55 50 55 Q75 55 75 85" fill="white" /> <circle cx="42" cy="32" r="3" fill="#e879a9" /> <circle cx="58" cy="32" r="3" fill="#e879a9" /> <path d="M45 42 Q50 47 55 42" stroke="#e879a9" stroke-width="2" fill="none" stroke-linecap="round" />
+        </svg>
+       </div>
+       <div class="absolute -top-4 -right-4 w-12 h-12 bg-yellow-200 rounded-full flex items-center justify-center text-2xl animate-bounce">
+        ⭐
+       </div>
+       <div class="absolute -bottom-2 -left-2 w-10 h-10 bg-pink-200 rounded-full flex items-center justify-center text-xl" style="animation: float 2s ease-in-out infinite 0.5s;">
+        ����
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-pink-400 font-medium mb-2">Kenali Saya</p>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-gray-800">Tentang Saya</h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-pink-400 to-purple-400 mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="bg-white/60 backdrop-blur-sm rounded-3xl p-8 shadow-xl shadow-pink-100/50 card-hover">
+       <h3 class="font-heading text-2xl font-semibold text-gray-800 mb-4 flex items-center gap-2"><span class="text-2xl">📖</span> Latar Belakang</h3>
+       <p class="text-gray-600 leading-relaxed mb-6">Saya adalah Khaira Ramadhani Putri, saya lahir pada 20 September 2008. Hobi saya memasak dan mendengarkan musik. Saya merupakan anak pertama dari dua bersaudara.</p>
+       <div class="space-y-4">
+        <div class="flex items-start gap-3"><span class="text-2xl">🎯</span>
+         <div>
+          <h4 class="font-semibold text-gray-700">Minat</h4>
+          <p class="text-gray-500">Dunia kesehatan dan pangan</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-3"><span class="text-2xl">💫</span>
+         <div>
+          <h4 class="font-semibold text-gray-700">Tujuan</h4>
+          <p class="text-gray-500">Jadi orang kaya</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-3"><span class="text-2xl">💝</span>
+         <div>
+          <h4 class="font-semibold text-gray-700">Keunggulan Pribadi</h4>
+          <p class="text-gray-500">Baik, murah hati dan suka menolong</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="bg-white/60 backdrop-blur-sm rounded-3xl p-8 shadow-xl shadow-purple-100/50 card-hover">
+       <h3 class="font-heading text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2"><span class="text-2xl">🎓</span> Pendidikan</h3>
+       <div class="space-y-6">
+        <div class="relative pl-8 border-l-2 border-pink-200">
+         <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-gradient-to-r from-pink-400 to-purple-400"></div>
+         <h4 class="font-semibold text-gray-700">SMAN 1 Subang</h4>
+         <p class="text-sm text-gray-500">Sekarang</p>
+        </div>
+        <div class="relative pl-8 border-l-2 border-pink-200">
+         <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-gradient-to-r from-pink-300 to-purple-300"></div>
+         <h4 class="font-semibold text-gray-700">SMPN 1 Subang</h4>
+         <p class="text-sm text-gray-500">2020 - 2023</p>
+        </div>
+        <div class="relative pl-8 border-l-2 border-pink-200">
+         <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-gradient-to-r from-pink-200 to-purple-200"></div>
+         <h4 class="font-semibold text-gray-700">SDN Rosela Indah</h4>
+         <p class="text-sm text-gray-500">2014 - 2020</p>
+        </div>
+        <div class="relative pl-8">
+         <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-pink-100"></div>
+         <h4 class="font-semibold text-gray-700">TK IT Al Furqon</h4>
+         <p class="text-sm text-gray-500">2012 - 2014</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Skills Section -->
+   <section id="skills" class="py-20 px-6 bg-white/30">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-pink-400 font-medium mb-2">Kemampuan Saya</p>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-gray-800">Keahlian</h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-pink-400 to-purple-400 mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8"><!-- Hard Skills -->
+      <div class="bg-gradient-to-br from-pink-50 to-purple-50 rounded-3xl p-8 card-hover">
+       <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-r from-pink-400 to-purple-400 flex items-center justify-center">
+         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+         </svg>
+        </div>
+        <h3 class="font-heading text-xl font-semibold text-gray-800">Hard Skills</h3>
+       </div>
+       <div class="space-y-4">
+        <div class="flex items-center gap-4 p-4 bg-white/60 rounded-2xl"><span class="text-3xl">🧠</span>
+         <div>
+          <h4 class="font-semibold text-gray-700">Berfikir Kritis</h4>
+          <p class="text-sm text-gray-500">Analisis dan pemecahan masalah</p>
+         </div>
+        </div>
+        <div class="flex items-center gap-4 p-4 bg-white/60 rounded-2xl"><span class="text-3xl">⚡</span>
+         <div>
+          <h4 class="font-semibold text-gray-700">Bergerak Gesit</h4>
+          <p class="text-sm text-gray-500">Cepat dan tanggap</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Soft Skills -->
+      <div class="bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-8 card-hover">
+       <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-r from-purple-400 to-blue-400 flex items-center justify-center">
+         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+         </svg>
+        </div>
+        <h3 class="font-heading text-xl font-semibold text-gray-800">Soft Skills</h3>
+       </div>
+       <div class="grid grid-cols-3 gap-4">
+        <div class="text-center p-4 bg-white/60 rounded-2xl card-hover"><span class="text-3xl block mb-2">💬</span>
+         <p class="text-sm font-medium text-gray-700">Komunikasi</p>
+        </div>
+        <div class="text-center p-4 bg-white/60 rounded-2xl card-hover"><span class="text-3xl block mb-2">🤝</span>
+         <p class="text-sm font-medium text-gray-700">Kerja Tim</p>
+        </div>
+        <div class="text-center p-4 bg-white/60 rounded-2xl card-hover"><span class="text-3xl block mb-2">🎨</span>
+         <p class="text-sm font-medium text-gray-700">Kreativitas</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Portfolio Section -->
+   <section id="portfolio" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-pink-400 font-medium mb-2">Hasil Karya</p>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-gray-800">Portofolio</h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-pink-400 to-purple-400 mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Portfolio Item 1 -->
+      <div class="group bg-white rounded-3xl overflow-hidden shadow-xl shadow-pink-100/30 card-hover">
+       <div class="h-48 bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200 flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-pink-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity"></div><span class="text-6xl">🍳</span>
+       </div>
+       <div class="p-6">
+        <h3 class="font-heading text-lg font-semibold text-gray-800 mb-2">Resep Masakan</h3>
+        <p class="text-gray-500 text-sm mb-4">Koleksi resep masakan favorit yang sudah dicoba dan diuji</p>
+        <div class="flex gap-2"><span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-xs font-medium">Kuliner</span> <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs font-medium">Hobi</span>
+        </div>
+       </div>
+      </div><!-- Portfolio Item 2 --> <a href="https://open.spotify.com/playlist/53gLx4yZQOsu9Sx7AeH8y4?si=mR0O8YVBSc6Vlfw9JUdX_A&amp;pi=H8d2uw8rS4ePn" target="_blank" rel="noopener noreferrer" class="group bg-white rounded-3xl overflow-hidden shadow-xl shadow-purple-100/30 card-hover">
+       <div class="h-48 bg-gradient-to-br from-purple-200 via-pink-200 to-yellow-200 flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-pink-400/20 opacity-0 group-hover:opacity-100 transition-opacity"></div><span class="text-6xl">🎵</span>
+       </div>
+       <div class="p-6">
+        <h3 class="font-heading text-lg font-semibold text-gray-800 mb-2">Playlist Musik</h3>
+        <p class="text-gray-500 text-sm mb-4">Kurasi lagu-lagu favorit Taylor Swift dan artis lainnya</p>
+        <div class="flex gap-2"><span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs font-medium">Musik</span> <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-xs font-medium">Swiftie</span>
+        </div>
+       </div></a> <!-- Portfolio Item 3 -->
+      <div class="group bg-white rounded-3xl overflow-hidden shadow-xl shadow-blue-100/30 card-hover">
+       <div class="h-48 bg-gradient-to-br from-blue-200 via-green-200 to-pink-200 flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-green-400/20 opacity-0 group-hover:opacity-100 transition-opacity"></div><span class="text-6xl">📚</span>
+       </div>
+       <div class="p-6">
+        <h3 class="font-heading text-lg font-semibold text-gray-800 mb-2">Proyek OSIS</h3>
+        <p class="text-gray-500 text-sm mb-4">Dokumentasi kegiatan dan program kerja selama menjadi pengurus OSIS</p>
+        <div class="flex gap-2"><span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-medium">Organisasi</span> <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs font-medium">Leadership</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Experience Section -->
+   <section id="experience" class="py-20 px-6 bg-white/30">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-pink-400 font-medium mb-2">Perjalanan Saya</p>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-gray-800">Pengalaman Organisasi</h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-pink-400 to-purple-400 mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="max-w-3xl mx-auto">
+      <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl shadow-pink-100/30">
+       <div class="flex items-start gap-6">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-400 to-purple-400 flex items-center justify-center flex-shrink-0">
+         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+         </svg>
+        </div>
+        <div class="flex-1">
+         <h3 class="font-heading text-xl font-semibold text-gray-800 mb-2">OSIS SMPN 1 Subang</h3>
+         <p class="text-pink-500 font-medium mb-4">2 Periode Kepengurusan</p>
+         <div class="space-y-4">
+          <div class="flex items-center gap-4 p-4 bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl">
+           <div class="w-10 h-10 rounded-full bg-pink-200 flex items-center justify-center"><span class="font-bold text-pink-600">1</span>
+           </div>
+           <div>
+            <h4 class="font-semibold text-gray-700">Seksi Bidang 7</h4>
+            <p class="text-sm text-gray-500">Tahun 2020</p>
+           </div>
+          </div>
+          <div class="flex items-center gap-4 p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl">
+           <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center"><span class="font-bold text-purple-600">2</span>
+           </div>
+           <div>
+            <h4 class="font-semibold text-gray-700">Seksi Bidang 5</h4>
+            <p class="text-sm text-gray-500">Tahun 2021</p>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-pink-400 font-medium mb-2">Mari Terhubung</p>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-gray-800">Hubungi Saya</h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-pink-400 to-purple-400 mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto"><!-- Email --> <a href="mailto:khairaramadhaniputrii@gmail.com" class="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 text-center shadow-xl shadow-pink-100/30 card-hover">
+       <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-pink-400 to-rose-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+       </div><h3 class="font-heading font-semibold text-gray-800 mb-2">Email</h3><p id="contact-email" class="text-gray-500 text-sm break-all">khairaramadhaniputrii@gmail.com</p></a> <!-- WhatsApp --> <a href="https://wa.me/6289510167192" target="_blank" rel="noopener noreferrer" class="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 text-center shadow-xl shadow-green-100/30 card-hover">
+       <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-green-400 to-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+       </div><h3 class="font-heading font-semibold text-gray-800 mb-2">WhatsApp</h3><p id="contact-whatsapp" class="text-gray-500 text-sm">089510167192</p></a> <!-- Instagram --> <a href="https://instagram.com/khairrap" target="_blank" rel="noopener noreferrer" class="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 text-center shadow-xl shadow-purple-100/30 card-hover">
+       <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-purple-400 via-pink-400 to-orange-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg>
+       </div><h3 class="font-heading font-semibold text-gray-800 mb-2">Instagram</h3><p id="contact-instagram" class="text-gray-500 text-sm">@khairrap</p></a>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-8 px-6 bg-white/50 border-t border-pink-100">
+    <div class="max-w-6xl mx-auto">
+     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+       <div class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-purple-400 flex items-center justify-center text-white font-heading font-bold text-sm">
+        K
+       </div><span class="font-heading font-medium text-gray-700">Khaira Putri</span>
+      </div>
+      <p class="text-gray-500 text-sm">© khaira – 2026 • Made with 💖</p>
+      <div class="flex items-center gap-4"><a href="mailto:khairaramadhaniputrii@gmail.com" class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-500 hover:bg-pink-200 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg></a> <a href="https://wa.me/6289510167192" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-500 hover:bg-green-200 transition-colors">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg></a> <a href="https://instagram.com/khairrap" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-500 hover:bg-purple-200 transition-colors">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg></a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      site_name: 'Khaira Putri',
+      tagline: 'swiftiee',
+      welcome_title: 'Khaira Ramadhani Putri',
+      welcome_subtitle: 'Memasak',
+      welcome_description: 'Selamat datang di portofolio khairaa, silahkan baca untuk mengenal saya lebih jauh',
+      email: 'khairaramadhaniputrii@gmail.com',
+      whatsapp: '089510167192',
+      instagram: '@khairrap',
+      primary_color: '#e879a9',
+      secondary_color: '#a78bfa',
+      background_color: '#fdf2f8',
+      text_color: '#1f2937',
+      accent_color: '#10b981'
+    };
+    
+    let config = { ...defaultConfig };
+    
+    function updateUI(cfg) {
+      document.getElementById('site-name').textContent = cfg.site_name || defaultConfig.site_name;
+      document.getElementById('tagline').textContent = (cfg.tagline || defaultConfig.tagline) + ' ✨';
+      document.getElementById('welcome-title').textContent = cfg.welcome_title || defaultConfig.welcome_title;
+      document.getElementById('welcome-subtitle').textContent = cfg.welcome_subtitle || defaultConfig.welcome_subtitle;
+      document.getElementById('welcome-description').textContent = cfg.welcome_description || defaultConfig.welcome_description;
+      document.getElementById('contact-email').textContent = cfg.email || defaultConfig.email;
+      document.getElementById('contact-whatsapp').textContent = cfg.whatsapp || defaultConfig.whatsapp;
+      document.getElementById('contact-instagram').textContent = cfg.instagram || defaultConfig.instagram;
+    }
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+    
+    // Header scroll effect
+    const header = document.getElementById('header');
+    let lastScroll = 0;
+    
+    document.getElementById('app-wrapper').addEventListener('scroll', function() {
+      const currentScroll = this.scrollTop;
+      
+      if (currentScroll > 100) {
+        header.style.boxShadow = '0 4px 20px rgba(232, 121, 169, 0.1)';
+      } else {
+        header.style.boxShadow = 'none';
+      }
+      
+      lastScroll = currentScroll;
+    });
+    
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (cfg) => {
+          config = { ...cfg };
+          updateUI(config);
+        },
+        mapToCapabilities: (cfg) => ({
+          recolorables: [
+            {
+              get: () => cfg.primary_color || defaultConfig.primary_color,
+              set: (value) => {
+                cfg.primary_color = value;
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            },
+            {
+              get: () => cfg.secondary_color || defaultConfig.secondary_color,
+              set: (value) => {
+                cfg.secondary_color = value;
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            },
+            {
+              get: () => cfg.background_color || defaultConfig.background_color,
+              set: (value) => {
+                cfg.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => cfg.text_color || defaultConfig.text_color,
+              set: (value) => {
+                cfg.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => cfg.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                cfg.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['site_name', cfg.site_name || defaultConfig.site_name],
+          ['tagline', cfg.tagline || defaultConfig.tagline],
+          ['welcome_title', cfg.welcome_title || defaultConfig.welcome_title],
+          ['welcome_subtitle', cfg.welcome_subtitle || defaultConfig.welcome_subtitle],
+          ['welcome_description', cfg.welcome_description || defaultConfig.welcome_description],
+          ['email', cfg.email || defaultConfig.email],
+          ['whatsapp', cfg.whatsapp || defaultConfig.whatsapp],
+          ['instagram', cfg.instagram || defaultConfig.instagram]
+        ])
+      });
+    }
+    
+    // Initial UI update
+    updateUI(config);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c89a724012aafeb',t:'MTc3MDIwMjcwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
